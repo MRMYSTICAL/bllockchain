@@ -1,0 +1,46 @@
+// SPDX-License-Identifier: UNLISENSED
+
+pragma solidity ^0.8.0;
+
+contract MarksManagemtSys
+{
+  struct Studentstruct
+  {
+   uint id;
+   string fName;
+   string lName;
+   uint marks;
+
+
+  }
+ address owner;
+
+ uint public stdCount = 0;
+
+ Studentstruct[] stdRecords;
+
+ constructor()
+ {
+    owner=msg.sender;
+
+ }    
+
+ function addNewRecords( uint _ID,
+                        string memory _fName,
+                        string memory _lName,
+                        uint _marks)public payable 
+
+
+ {
+   stdCount = stdCount + 1;
+
+   stdRecords.push(Studentstruct(_ID, _fName,_lName, _marks));
+
+  }
+  function getAllRecords() public view returns(Studentstruct[] memory)
+  {
+     return stdRecords;
+  }
+ 
+ 
+}
